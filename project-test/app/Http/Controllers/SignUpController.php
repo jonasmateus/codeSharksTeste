@@ -29,9 +29,11 @@ class SignUpController extends Controller
             return redirect('/')->with('fail', 'Passwords does NOT mache!');
         } */
         
-        $isCreated =  User::create($attributes);
+        $isCreatedUser =  User::create($attributes);
 
-        if($isCreated) {
+        if($isCreatedUser) {
+
+            auth()->login($isCreatedUser);
             return redirect('/')->with('success', 'Your account has been created.');
         }
         else {

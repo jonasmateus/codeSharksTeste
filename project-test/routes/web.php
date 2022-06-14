@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\SignInController;
+use App\Http\Controllers\SessionController;
 
 
 /*
@@ -18,6 +19,10 @@ use App\Http\Controllers\SignInController;
 
 Route::get('/', [SignInController::class, 'index']);
 
-Route::get('sign-up', [SignUpController::class, 'show']);
+Route::post('sign-in', [SessionController::class, 'beginSession']);
 
-Route::post('sign-up', [SignUpController::class, 'createUser']);
+Route::get('sign-up', [SignUpController::class, 'show'])->middleware('guest');
+
+Route::post('sign-up', [SignUpController::class, 'createUser'])->middleware('guest');
+
+Route::post('sign-out', [SessionController::class, 'endSession']);
