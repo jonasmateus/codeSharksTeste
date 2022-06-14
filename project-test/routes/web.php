@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SignUpController;
+use App\Http\Controllers\SignInController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [SignInController::class, 'index']);
 
-Route::get('/sign-up', function () {
-    return view('sign-up');
-});
+Route::get('sign-up', [SignUpController::class, 'show']);
 
-Route::get('/forgot', function () {
-    return view('forgot');
-});
+Route::post('sign-up', [SignUpController::class, 'createUser']);

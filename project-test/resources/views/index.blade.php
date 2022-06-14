@@ -64,7 +64,7 @@
 				<div class="col-md-4 col-md-offset-4">
 
 					<!-- Start Sign In Form -->
-					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+					<form action="/sign-up" class="fh5co-form animate-box" data-animate-effect="fadeIn">
 						<h2>Sign In</h2>
 						<div class="form-group">
 							<label for="username" class="sr-only">Username</label>

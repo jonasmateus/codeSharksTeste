@@ -64,26 +64,41 @@
 					
 
 					<!-- Start Sign In Form -->
-					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+					<form method="post" action="/sign-up" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+						@csrf
 						<h2>Sign Up</h2>
-						<div class="form-group">
-							<div class="alert alert-success" role="alert">Your info has been saved.</div>
-						</div>
-						<div class="form-group">
+						<!-- @if($errors->any())
+							<div class="form-group">
+								<div class="alert alert-success" role="alert">Your info has been saved.</div>
+							</div>
+						@endif
+						 --><div class="form-group">
 							<label for="name" class="sr-only">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="Name" autocomplete="off">
+							<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" placeholder="Name" autocomplete="off">
+							@error("name")
+								<span class="text-danger"> {{ $message }} </span>
+							@enderror
 						</div>
 						<div class="form-group">
 							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Email" autocomplete="off">
+							<input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Email" autocomplete="off">
+								@error("email")
+									<span class="text-danger"> {{ $message }} </span>
+								@enderror
 						</div>
 						<div class="form-group">
 							<label for="password" class="sr-only">Password</label>
-							<input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
+							@error("password")
+								<span class="text-danger"> {{ $message }} </span>
+							@enderror
 						</div>
 						<div class="form-group">
-							<label for="re-password" class="sr-only">Re-type Password</label>
-							<input type="password" class="form-control" id="re-password" placeholder="Re-type Password" autocomplete="off">
+							<label for="re-password" class="sr-only">Password</label>
+							<input type="password" class="form-control" id="re-password" name="re-password" placeholder="Password" autocomplete="off">
+							@error("re-password")
+								<span class="text-danger"> {{ $message }} </span>
+							@enderror
 						</div>
 						<div class="form-group">
 							<label for="remember"><input type="checkbox" id="remember"> Remember Me</label>
@@ -94,6 +109,13 @@
 						<div class="form-group">
 							<input type="submit" value="Sign Up" class="btn btn-primary">
 						</div>
+						@if($errors->any())
+							@foreach($errors->all() as $error)
+								<ul class="form-group">
+									<li class="text-danger">{{ $error }}</li>
+								</ul>
+							@endforeach
+						@endif
 					</form>
 					<!-- END Sign In Form -->
 
