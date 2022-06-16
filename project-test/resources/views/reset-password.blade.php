@@ -58,30 +58,33 @@
 	<body>
 
 		<div class="container">
-
+			
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
-					
+
 					<!-- Start Sign In Form -->
-					<form method="post" action="/forgot-password" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+					<form method="post" action="/reset-password" class="fh5co-form animate-box" data-animate-effect="fadeIn">
 						@csrf
-						<h2>Forgot Password</h2>
-						<!-- <div class="form-group">
-							<div class="alert alert-success" role="alert">Your email has been sent.</div>
-						</div> -->
+						<h2>Reset Password</h2>
 						<div class="form-group">
-							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off">
+							<label for="password" class="sr-only">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
+							@error("password")
+								<span class="text-danger"> {{ $message }} </span>
+							@enderror
 						</div>
 						<div class="form-group">
-							<p><a href="/">Sign In</a> or <a href="/sign-up">Sign Up</a></p>
+							<input type="submit" value="Sign Up" class="btn btn-primary">
 						</div>
-						<div class="form-group">
-							<input type="submit" value="Send Email" class="btn btn-primary">
-						</div>
+						@if($errors->any())
+							@foreach($errors->all() as $error)
+								<ul class="form-group">
+									<li class="text-danger">{{ $error }}</li>
+								</ul>
+							@endforeach
+						@endif
 					</form>
 					<!-- END Sign In Form -->
-
 
 				</div>
 			</div>

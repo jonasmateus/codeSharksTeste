@@ -14,7 +14,7 @@
       <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
     </div>
     <div class="form-group">
-      <p>Not registered? <a href="sign-up">Sign Up</a> | <a href="/forgot">Forgot Password?</a></p>
+      <p>Not registered? <a href="sign-up">Sign Up</a> | <a href="/forgot-password">Forgot Password?</a></p>
     </div>
     <div class="form-group">
       <input type="submit" value="Sign In" class="btn btn-primary">
