@@ -32,6 +32,6 @@ Route::get('forgot-password', [ForgotController::class, 'show']);
 
 Route::post('forgot-password', [ForgotController::class, 'sendVerificationLink'])->middleware('guest');
 
-/* Route::get('reset-password/{code}', [ForgotController::class, 'resetPasswordPage'])->middleware('guest');
- */
-/* Route::post('reset-password', [ForgotController::class, 'resetPassword'])->middleware('guest'); */
+Route::get('reset-password/{code}', [ForgotController::class, 'resetPasswordPage'])->middleware('guest');
+
+Route::post('reset-password', [ForgotController::class, 'resetPassword'])->middleware('guest');
